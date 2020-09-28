@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.3.min.js" ></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#ajaxBtn").click(function () {
+                $.ajax({
+                    url: "http://localhost:8080/0927_web1/MyServlet3",
+                    data: {action: "jQueryAjax"},
+                    type: "GET",
+                    success: function (data) {
+                        // alert("服务器返回的数据是：" + data);
+                        var jsonObj = JSON.parse(data);
+                        $("#msg").html("编号：" + jsonObj.id + " , 姓名：" + jsonObj.name + ", 年龄:" + jsonObj.age + ", 性别:" + jsonObj.sex);
+                    },
+                    dataType: "text"
+                });
+            });
+        });
+
+    </script>
+</head>
+<body>
+
+    <button id="ajaxBtn">JQ</button>
+    <div id="msg"></div>
+</body>
+</html>
